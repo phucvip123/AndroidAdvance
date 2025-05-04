@@ -1,5 +1,6 @@
 package com.app.androidadvance
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -11,37 +12,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.app.androidadvance.services.UserService
 import com.app.androidadvance.ui.theme.AndroidAdvanceTheme
+import com.google.firebase.FirebaseApp
 
 class MainActivity : ComponentActivity() {
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             AndroidAdvanceTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                Scaffold {
+                    AppNavHost()
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    AndroidAdvanceTheme {
-        Greeting("Android")
     }
 }

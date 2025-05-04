@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    id("com.google.gms.google-services") version "4.4.2" apply false
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -42,14 +42,17 @@ android {
 
 dependencies {
 
-    // Trong build.gradle (Module)
+    // Viewmodel
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx.v270)
-
+    //Firebase
     implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.auth)
-    implementation(libs.firebase.firestore)
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.gson)
 
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.material.icons.extended)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -58,6 +61,10 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.navigation.runtime.android)
+    implementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.animation.core.lint)
+    implementation(libs.firebase.firestore.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
