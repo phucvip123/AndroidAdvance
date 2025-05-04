@@ -10,6 +10,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.app.androidadvance.services.UserService
+import com.app.androidadvance.ui.screens.HomeScreen
 import com.app.androidadvance.ui.screens.LoginScreen
 import com.app.androidadvance.ui.screens.RegisterScreen
 
@@ -29,7 +31,7 @@ fun NavGraph(modifier: Modifier, navController: NavHostController) {
     NavHost(
         modifier = modifier,
         navController = navController,
-        startDestination = "register"
+        startDestination = if(!UserService.isLogin()) "register" else "home"
     )
     {
         composable("register"){
@@ -37,6 +39,9 @@ fun NavGraph(modifier: Modifier, navController: NavHostController) {
         }
         composable("login"){
             LoginScreen(navController)
+        }
+        composable("home"){
+            HomeScreen(navController)
         }
 
     }
